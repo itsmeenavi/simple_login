@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="login-container">
+        <h2 style="text-align:center;">Login</h2>
+        <div id="error" class="error"></div>
+        <form id="loginForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent form from submitting
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorDiv = document.getElementById('error');
+
+        // Basic validation
+        if (username === '' || password === '') {
+            errorDiv.textContent = 'Please enter both username and password.';
+            return;
+        }
+
+        // Authenticate user using simple if-else statements
+        if (username === 'student1' && password === 'studentpass') {
+            window.location.href = 'home_student.html';
+        } else if (username === 'faculty1' && password === 'facultypass') {
+            window.location.href = 'home_faculty.html';
+        } else if (username === 'dean1' && password === 'deanpass') {
+            window.location.href = 'home_dean.html';
+        } else if (username === 'admin1' && password === 'adminpass') {
+            window.location.href = 'home_admin.html';
+        } else {
+            errorDiv.textContent = 'Invalid username or password.';
+        }
+
+    });
+</script>
